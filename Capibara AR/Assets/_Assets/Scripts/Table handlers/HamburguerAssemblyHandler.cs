@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HamburguerAssemblyHandler : MonoBehaviour
+public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
 {
     private Hamburguer hamburguerInProcess; //Current hamburguer being built in the assembly
 
@@ -9,6 +9,9 @@ public class HamburguerAssemblyHandler : MonoBehaviour
     [SerializeField] private Transform ingredientsAnchorPosition;
     [SerializeField] private float ingredientsOffsetIncrease;
     private float ingredientsOffSet = 0;
+
+    [field: SerializeField] //Allows properties to be serialized
+    public bool IsRemovable { get; set; }
 
     public void AddIngredient(Ingredient ingredient)
     {
@@ -22,11 +25,21 @@ public class HamburguerAssemblyHandler : MonoBehaviour
     {
         //TODO
     }
-
+    
     public void ResetAssembly()
     {
         hamburguerInProcess = new Hamburguer();
         ingredientsOffSet = 0;
+    }
+
+    public void ItemReceived()
+    {
+        //TODO
+    }
+
+    public void RemoveItem()
+    {
+        //TODO
     }
 
 }

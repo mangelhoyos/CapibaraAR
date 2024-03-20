@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrillHandler : MonoBehaviour
+public class GrillHandler : MonoBehaviour, IDropZone
 {
     List<GrillableIngredient> meatCooking = new List<GrillableIngredient>();
     Coroutine grillingCoroutine = null;
 
     bool isGrilling = false;
-    
+
+    [field: SerializeField]
+    public bool IsRemovable { get; set; }
+
     public void AddGrillIngredient(GrillableIngredient meatToCook)
     {
         meatCooking.Add(meatToCook);
@@ -45,5 +48,15 @@ public class GrillHandler : MonoBehaviour
         }
         yield return null;
         grillingCoroutine = StartCoroutine(GrillIngredientsCoroutine());
+    }
+
+    public void ItemReceived()
+    {
+        //TODO
+    }
+
+    public void RemoveItem()
+    {
+        //TODO
     }
 }
