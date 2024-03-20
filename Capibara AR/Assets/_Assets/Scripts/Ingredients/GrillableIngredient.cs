@@ -10,17 +10,26 @@ public enum GrillIngredientState
 
 public class GrillableIngredient : Ingredient
 {
-    [SerializeField] private float grillValue;
+    private float grillValue;
     [SerializeField] private Texture2D[] meatTextures;
     [SerializeField] private MeshRenderer meatMeshRenderer;
 
+    private const float GRILLINCREMENTVALUE = 0.3f;
+    private const float COOKTHRESHOLD = 4f;
+    private const float BURNTTHRESHHOLD = COOKTHRESHOLD * 2;
+
     public void CookMeat()
     {
-
+        grillValue += GRILLINCREMENTVALUE * Time.deltaTime;
+        if(grillValue >= BURNTTHRESHHOLD)
+        {
+            //TODO Burn action
+        }
     }
 
     public GrillIngredientState GetGrillableIngredient()
     {
-        return  GrillIngredientState.COOKED; //default result
+        GrillIngredientState actualFoodState = grillValue < COOKTHRESHOLD ? GrillIngredientState.RAW : GrillIngredientState.COOKED;
+        return actualFoodState;
     }
 }
