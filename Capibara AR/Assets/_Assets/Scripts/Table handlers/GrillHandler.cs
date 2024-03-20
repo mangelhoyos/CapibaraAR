@@ -36,6 +36,14 @@ public class GrillHandler : MonoBehaviour
 
     private IEnumerator GrillIngredientsCoroutine()
     {
+        if(isGrilling)
+        {
+            foreach(GrillableIngredient ingredient in meatCooking)
+            {
+                ingredient.CookMeat();
+            }
+        }
         yield return null;
+        grillingCoroutine = StartCoroutine(GrillIngredientsCoroutine());
     }
 }
