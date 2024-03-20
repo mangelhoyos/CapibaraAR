@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
+/// <summary>
+/// Script for handling light estimation with AR
+/// </summary>
 public class ARLightEstimationHandler : MonoBehaviour
 {
     [Header("Light estimation setup")]
