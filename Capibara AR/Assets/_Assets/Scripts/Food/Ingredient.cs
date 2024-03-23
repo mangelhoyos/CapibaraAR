@@ -15,7 +15,7 @@ public enum IngredientType
 public class Ingredient : MonoBehaviour, IGrabbable
 {
     public IngredientType ingredientType;
-    public Vector3 anchorPosition;
+    [HideInInspector] public Vector3 anchorPosition;
 
     public IDropZone ActualDropzone { get; set; }
     public Vector3 ReturnAnchor { get; set; }

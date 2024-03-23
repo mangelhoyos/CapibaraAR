@@ -32,14 +32,14 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
         ingredientsOffSet = 0;
     }
 
-    public void ItemReceived()
+    public void ItemReceived(IGrabbable grabbableReceived)
     {
-        //TODO
+        AddIngredient(grabbableReceived as Ingredient);
     }
 
-    public void RemoveItem()
+    public void RemoveItem(IGrabbable grabbableRemoved)
     {
-        //TODO
+        throw new System.Exception("Should not have a remove item");
     }
 
 }

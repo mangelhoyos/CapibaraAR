@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrillHandler : MonoBehaviour, IDropZone
@@ -8,6 +9,8 @@ public class GrillHandler : MonoBehaviour, IDropZone
     Coroutine grillingCoroutine = null;
 
     bool isGrilling = false;
+
+    [SerializeField] private GrillSpaceData[] grillabeIngredientsPositions = new GrillSpaceData[4];
 
     [field: SerializeField]
     public bool IsRemovable { get; set; }
@@ -24,6 +27,9 @@ public class GrillHandler : MonoBehaviour, IDropZone
 
     public void RemoveGrillIngredient(GrillableIngredient removeIngredient)
     {
+        if (!meatCooking.Find(x => x == removeIngredient))
+            return;
+
         meatCooking.Remove(removeIngredient);
         if(meatCooking.Count == 0)
         {
@@ -50,13 +56,65 @@ public class GrillHandler : MonoBehaviour, IDropZone
         grillingCoroutine = StartCoroutine(GrillIngredientsCoroutine());
     }
 
-    public void ItemReceived()
+    public void ItemReceived(IGrabbable grabbableReceived)
     {
-        //TODO
+        GrillSpaceData availableSpaceData = null;
+
+        foreach(GrillSpaceData spaceData in grillabeIngredientsPositions)
+        {
+            if(!spaceData.isOccupied)
+            {
+                availableSpaceData = spaceData;
+                break;
+            }
+        }
+
+        Transform grillableIngredient = (grabbableReceived as MonoBehaviour).transform;
+
+        if (availableSpaceData == null) 
+        {
+            RemoveItem(grabbableReceived);
+            grillableIngredient.position = grabbableReceived.ReturnAnchor;
+            grabbableReceived.ActualDropzone.ItemReceived(grabbableReceived);
+            return;
+        }
+
+        grillableIngredient = (grabbableReceived as MonoBehaviour).transform;
+        grillableIngredient.position = availableSpaceData.grillPosition.position;
+
+        grabbableReceived.ActualDropzone = this;
+        grabbableReceived.ReturnAnchor = availableSpaceData.grillPosition.position;
+
+        availableSpaceData.indexedIngredient = (grabbableReceived as MonoBehaviour).GetComponent<GrillableIngredient>();
+        availableSpaceData.isOccupied = true;
+
+        AddGrillIngredient((grabbableReceived as MonoBehaviour).GetComponent<GrillableIngredient>());
     }
 
-    public void RemoveItem()
+    public void RemoveItem(IGrabbable grabbableRemoved)
     {
-        //TODO
+        GrillSpaceData foundPositionForIngredient = null;
+
+        foreach(GrillSpaceData grillSpaceData in grillabeIngredientsPositions)
+        {
+            if (grillSpaceData.indexedIngredient == (grabbableRemoved as MonoBehaviour).GetComponent<GrillableIngredient>())
+            {
+                foundPositionForIngredient = grillSpaceData; 
+                break;
+            }
+        }
+
+        foundPositionForIngredient.isOccupied = false;
+        foundPositionForIngredient.indexedIngredient = null;
+
+        RemoveGrillIngredient((grabbableRemoved as MonoBehaviour).GetComponent<GrillableIngredient>());
     }
+}
+
+[System.Serializable]
+public class GrillSpaceData
+{
+    public bool isOccupied = false;
+    public Transform grillPosition;
+    [HideInInspector] public GrillableIngredient indexedIngredient = null;
 }
