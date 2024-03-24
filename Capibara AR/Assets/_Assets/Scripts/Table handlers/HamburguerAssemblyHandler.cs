@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
 {
-    private Hamburguer hamburguerInProcess; //Current hamburguer being built in the assembly
+    private Hamburguer hamburguerInProcess = new Hamburguer(); //Current hamburguer being built in the assembly
 
     [Header("Ingredients positioning")]
     [SerializeField] private Transform ingredientsAnchorPosition;
@@ -34,7 +34,7 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
 
     public void ItemReceived(IGrabbable grabbableReceived)
     {
-        AddIngredient(grabbableReceived as Ingredient);
+        AddIngredient((grabbableReceived as MonoBehaviour).GetComponent<Ingredient>());
     }
 
     public void RemoveItem(IGrabbable grabbableRemoved)

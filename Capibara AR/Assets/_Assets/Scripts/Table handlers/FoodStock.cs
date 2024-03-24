@@ -16,11 +16,9 @@ public class FoodStock : MonoBehaviour, IDropZone
 
     public void ItemReceived(IGrabbable grabbableReceived)
     {
-        Debug.Log("Destroy");
-        if (grabbableReceived as Object)
+        if (grabbableReceived as MonoBehaviour)
         {
-            
-            Destroy(grabbableReceived as Object);
+            Destroy((grabbableReceived as MonoBehaviour).gameObject);
         }
     }
 
@@ -31,7 +29,7 @@ public class FoodStock : MonoBehaviour, IDropZone
 
     private void GenerateIngredient()
     {
-        Ingredient instantiatedIngredient = Instantiate(ingredientPrefab, initialPosition.position, Quaternion.identity, transform);
+        Ingredient instantiatedIngredient = Instantiate(ingredientPrefab, initialPosition.position, ingredientPrefab.transform.rotation, transform);
         instantiatedIngredient.gameObject.SetActive(true);
         IGrabbable ingredientGrabbable = instantiatedIngredient.GetComponent<IGrabbable>();
         ingredientGrabbable.ActualDropzone = this;
