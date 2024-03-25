@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrillHandler : MonoBehaviour, IDropZone
@@ -8,7 +7,7 @@ public class GrillHandler : MonoBehaviour, IDropZone
     List<GrillableIngredient> meatCooking = new List<GrillableIngredient>();
     Coroutine grillingCoroutine = null;
 
-    bool isGrilling = false;
+    bool isGrilling = true;
 
     [SerializeField] private GrillSpaceData[] grillabeIngredientsPositions = new GrillSpaceData[4];
 
@@ -73,7 +72,6 @@ public class GrillHandler : MonoBehaviour, IDropZone
 
         if (availableSpaceData == null) 
         {
-            RemoveItem(grabbableReceived);
             grillableIngredient.position = grabbableReceived.ReturnAnchor;
             grabbableReceived.ActualDropzone.ItemReceived(grabbableReceived);
             return;

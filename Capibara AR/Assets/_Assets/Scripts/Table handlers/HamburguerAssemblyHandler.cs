@@ -10,6 +10,9 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
     [SerializeField] private float ingredientsOffsetIncrease;
     private float ingredientsOffSet = 0;
 
+    private int numberOfIngredients = 0;
+    private const int MAXNUMBEROFINGREDIENTS = 6;
+
     [field: SerializeField] //Allows properties to be serialized
     public bool IsRemovable { get; set; }
 
@@ -19,6 +22,7 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
         Vector3 offset = Vector3.up * ingredientsOffSet;
         ingredient.transform.position = ingredientsAnchorPosition.position + offset;
         ingredientsOffSet += ingredientsOffsetIncrease;
+        numberOfIngredients++;
     }
 
     public void DeliverHamburguer()
@@ -30,10 +34,20 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
     {
         hamburguerInProcess = new Hamburguer();
         ingredientsOffSet = 0;
+        numberOfIngredients = 0;
     }
 
     public void ItemReceived(IGrabbable grabbableReceived)
     {
+        if(numberOfIngredients == MAXNUMBEROFINGREDIENTS)
+        {
+            grabbableReceived.ActualDropzone.ItemReceived(grabbableReceived);
+            (grabbableReceived as MonoBehaviour).transform.position = grabbableReceived.ReturnAnchor;
+            return;
+        }
+
+        grabbableReceived.ActualDropzone = this;
+
         AddIngredient((grabbableReceived as MonoBehaviour).GetComponent<Ingredient>());
     }
 

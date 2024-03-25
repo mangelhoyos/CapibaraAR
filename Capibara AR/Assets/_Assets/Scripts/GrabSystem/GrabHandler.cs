@@ -39,7 +39,6 @@ public class GrabHandler : MonoBehaviour
             if(hitInfo.transform.TryGetComponent(out LeanDragTranslate translateComponent))
             {
                 IGrabbable grabbableItem = translateComponent.GetComponent<IGrabbable>();
-                Debug.Log("Grabbable : " + grabbableItem + " Drop zone: " + grabbableItem.ActualDropzone);
                 if (!grabbableItem.ActualDropzone.IsRemovable)
                     return;
 
@@ -64,19 +63,16 @@ public class GrabHandler : MonoBehaviour
             float radius = 0.2f;
             Vector3 origin = actualGrabbedItem.transform.position;
             Debug.DrawRay(actualGrabbedItem.transform.position, actualGrabbedItem.transform.up * 3, Color.red, 5);
-            Debug.Log("Sisas?");
             Collider[] dropZoneList = Physics.OverlapSphere(origin, radius, dropzoneMask);
             if (dropZoneList.Length > 0)
             {
                 IDropZone dropZone = dropZoneList[0].GetComponent<IDropZone>();
-                Debug.Log("Drop zone " + dropZone);
                 if (dropZone != null)
                 {
                     Debug.Log("Entro por dropzone");
                     IGrabbable grabbableItem = actualGrabbedItem.GetComponent<IGrabbable>();
                     if (grabbableItem.AcceptedDropZones().Contains(dropZone))
                     {
-                        Debug.Log("Esta permitido dentro del sexo");
                         hitDropZone = true;
                         dropZone.ItemReceived(grabbableItem);
                     }
@@ -89,8 +85,6 @@ public class GrabHandler : MonoBehaviour
                 IGrabbable grabbableItem = actualGrabbedItem.GetComponent<IGrabbable>();
                 (grabbableItem as MonoBehaviour).transform.position = grabbableItem.ReturnAnchor;
                 grabbableItem.ActualDropzone.ItemReceived(grabbableItem);
-                
-                
             }
 
             actualGrabbedItem = null;
