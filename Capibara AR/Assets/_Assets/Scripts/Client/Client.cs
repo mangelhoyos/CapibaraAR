@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Client : MonoBehaviour
 {
+    [SerializeField] private IngredientsList_SO ingredientOptions;
+
     private Hamburguer desiredHamburguer = null;
 
     //Callbacks
@@ -19,9 +22,42 @@ public class Client : MonoBehaviour
 
     bool isPaused;
 
+    [ContextMenu("Generate Order")]
     public void GenerateOrder()
     {
+        desiredHamburguer = new();
 
+        int desiredIngredients = UnityEngine.Random.Range(3, 6); //Change number for SerializeField variables after test
+
+        for(int i = 0; i < desiredIngredients; i++)
+        {
+            int randomIngredient = UnityEngine.Random.Range(0, ingredientOptions.ingredients.Count);
+
+            while (CountIngredientsInList(desiredHamburguer.ingredientList, ingredientOptions.ingredients[randomIngredient]) >= 2)
+            {
+                randomIngredient = UnityEngine.Random.Range(0, ingredientOptions.ingredients.Count);
+            }
+
+            desiredHamburguer.AddIngredientToHamburguer(ingredientOptions.ingredients[randomIngredient]);
+
+            Debug.Log("El ingrediente es: " + desiredHamburguer.ingredientList[i].ingredientType);
+        }
+
+    }
+
+    private int CountIngredientsInList(List<Ingredient> list, Ingredient ingredient)
+    {
+        int count = 0;
+
+        foreach (Ingredient item in list)
+        {
+            if (item.Equals(ingredient))
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private void InitializeTimer()
