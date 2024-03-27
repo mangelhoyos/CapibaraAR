@@ -14,6 +14,11 @@ public class GrillHandler : MonoBehaviour, IDropZone
     [field: SerializeField]
     public bool IsRemovable { get; set; }
 
+    private void Start()
+    {
+        GameManager.Instance.OnGamePaused.AddListener(GrillPause);
+    }
+
     public void AddGrillIngredient(GrillableIngredient meatToCook)
     {
         meatCooking.Add(meatToCook);

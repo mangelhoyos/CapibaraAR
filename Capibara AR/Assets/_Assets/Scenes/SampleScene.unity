@@ -906,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f08562efc43d6d14a9ca7ed48c632b01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.059
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f08562efc43d6d14a9ca7ed48c632b01, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2184,8 +2184,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "RESET \nHAMBURGUER"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 86fea64174beb8f4e9e1fc5fac8c934d, type: 2}
+  m_sharedMaterial: {fileID: 3916388604239881144, guid: 86fea64174beb8f4e9e1fc5fac8c934d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
