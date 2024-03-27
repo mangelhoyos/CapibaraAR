@@ -21,6 +21,8 @@ public class ResetButton : MonoBehaviour
     {
         canBePushed = false;
 
+        AudioManager.instance.Play("Thrash");
+
         buttonAnim.Play(BUTTONPRESSANIMATIONNAME);
         assemblyHandler.ResetAssembly();
 
