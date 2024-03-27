@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    private Client actualClient = null;
     public static GameManager Instance;
 
     private int actualPoints;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Game manager params")]
     public UnityEvent<bool> OnGamePaused;
     [SerializeField] private Tutorial gameTutorial;
+    [SerializeField] private HamburguerAssemblyHandler hamburguerAssembly;
 
     private void Awake()
     {
@@ -24,14 +26,25 @@ public class GameManager : MonoBehaviour
 
     private void GenerateNewClient()
     {
-        Client newClient = new Client();
-        //TODO Client spawn visuals
+        //actualClient = Instantiate bla bla bla;
+        //llama la funcion para mover el capibara al puesto
     }
 
-    private void ClientServedCorrectly()
+    public void ServeClient(Hamburguer hamburguerReceived)
     {
-        //Animations win
-        GenerateNewClient();
+        if (actualClient == null) //Agregar comprobación aqui de tiene orden
+            return;
+
+        if (actualClient.ReceiveHamburguer(hamburguerReceived))
+        {
+            AudioManager.instance.Play("HappyCapibara");
+            //Agregar funcion de retirar capibara
+        }
+        else
+        {
+            hamburguerAssembly.ResetAssembly();
+            AudioManager.instance.Play("ImpatientCapibara");
+        }
     }
 
     private void GameOver()
