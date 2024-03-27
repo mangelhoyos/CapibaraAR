@@ -28,6 +28,7 @@ public class GrillableIngredient : Ingredient
         grillValue += GRILLINCREMENTVALUE * Time.deltaTime;
         if(!isCooked && grillValue >= COOKTHRESHOLD)
         {
+            AudioManager.instance.Play("MeatFrying");
             isCooked = true;
             foreach(MeshRenderer meshRenderer in meatMeshRenderer)
             {
@@ -36,6 +37,7 @@ public class GrillableIngredient : Ingredient
         }
         else if(!isBurnt && grillValue >= BURNTTHRESHHOLD)
         {
+            AudioManager.instance.Play("MeatBurnt");
             isBurnt = true;
             StartCoroutine(BurnMeat());
         }

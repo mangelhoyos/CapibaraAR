@@ -17,6 +17,7 @@ public class GrillHandler : MonoBehaviour, IDropZone
     public void AddGrillIngredient(GrillableIngredient meatToCook)
     {
         meatCooking.Add(meatToCook);
+        AudioManager.instance.Play("Assemble");
 
         if (grillingCoroutine != null)
             return;
@@ -28,6 +29,8 @@ public class GrillHandler : MonoBehaviour, IDropZone
     {
         if (!meatCooking.Find(x => x == removeIngredient))
             return;
+
+        AudioManager.instance.SetWithFade("MeatFrying", 0.5f, false);
 
         meatCooking.Remove(removeIngredient);
         if(meatCooking.Count == 0)

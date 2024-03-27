@@ -22,6 +22,7 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
     public void AddIngredient(Ingredient ingredient)
     {
         hamburguerInProcess.AddIngredientToHamburguer(ingredient);
+        AudioManager.instance.Play("Assemble");
         Vector3 offset = Vector3.up * ingredientsOffSet;
         ingredient.transform.position = ingredientsAnchorPosition.position + offset;
         ingredientsOffSet += ingredientsOffsetIncrease;
@@ -30,7 +31,8 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
 
     public void DeliverHamburguer()
     {
-        //TODO
+        GameManager.Instance.ServeClient(hamburguerInProcess);
+        ResetAssembly();
     }
     
     public void ResetAssembly()
@@ -39,7 +41,7 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
         {
             Destroy(ingredient.gameObject);
         }
-
+        AudioManager.instance.Play("Thrash");
         hamburguerInProcess = new Hamburguer();
         ingredientsOffSet = 0;
         numberOfIngredients = 0;

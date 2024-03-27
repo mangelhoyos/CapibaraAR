@@ -16,12 +16,13 @@ public class GrabHandler : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        AudioManager.instance.SetWithFade("Soundtrack", 6, true);
     }
 
     private void OnEnable()
     {
         LeanTouch.OnFingerDown += TryGrabItem;
-        LeanTouch.OnFingerUp += ReleaseItem;
+        LeanTouch.OnFingerUp += ReleaseItem;  
     }
 
     private void OnDisable()
@@ -69,7 +70,6 @@ public class GrabHandler : MonoBehaviour
                 IDropZone dropZone = dropZoneList[0].GetComponent<IDropZone>();
                 if (dropZone != null)
                 {
-                    Debug.Log("Entro por dropzone");
                     IGrabbable grabbableItem = actualGrabbedItem.GetComponent<IGrabbable>();
                     if (grabbableItem.AcceptedDropZones().Contains(dropZone))
                     {
