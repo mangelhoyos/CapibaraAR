@@ -3933,7 +3933,142 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 0}
-  sounds: []
+  sounds:
+  - name: Planning
+    clip: {fileID: 8300000, guid: 1532ad55180f7dd4d8f5e46f49b4f881, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Transition
+    clip: {fileID: 8300000, guid: 3a413bc373aa2794eb2eb82dbbb60190, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Soundtrack
+    clip: {fileID: 8300000, guid: 0900e72798c05ee4a9a271fcf4b213be, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MeatFrying
+    clip: {fileID: 8300000, guid: 97f2fda276b32a648b7acf4a085fb425, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: MeatBurnt
+    clip: {fileID: 8300000, guid: fc8649c171190e448affefa748c9bd54, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Bell
+    clip: {fileID: 8300000, guid: 300fdc22babfe6d44ab78fb80b6ae639, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: HappyCapibara
+    clip: {fileID: 8300000, guid: d161d7ef314a8c842ae952efa52d3fd2, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: ImpatientCapibara
+    clip: {fileID: 8300000, guid: 514104960a5bac442b70217873ea48ab, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Lose
+    clip: {fileID: 8300000, guid: 5cebe5d402b84be4181277e5c15bb1dd, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Assemble
+    clip: {fileID: 8300000, guid: 49bc741a0e69881429c0481d6592f5aa, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Thrash
+    clip: {fileID: 8300000, guid: 9c030f581032d444c9a5b2378a5d7371, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: CapibaraTalking
+    clip: {fileID: 8300000, guid: 0edbed270dcc94b488804e65c0e7bb30, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Button
+    clip: {fileID: 8300000, guid: 54a1e5411ec63614faed142a01392091, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: InitService
+    clip: {fileID: 8300000, guid: 0cbe348ba5ea3fd4388ee07d82a84bba, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: SetTable
+    clip: {fileID: 8300000, guid: bd2cf635b5830114d8cac3b0ca921317, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &1958977132
 GameObject:
   m_ObjectHideFlags: 0
