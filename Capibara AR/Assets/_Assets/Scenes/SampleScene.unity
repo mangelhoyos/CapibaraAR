@@ -948,6 +948,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boton
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f08562efc43d6d14a9ca7ed48c632b01, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: f08562efc43d6d14a9ca7ed48c632b01, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1154371
@@ -1293,6 +1297,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3e1184641f5f28645ba2ec2af1cc69a4, type: 3}
       propertyPath: m_Name
       value: Campana
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e1184641f5f28645ba2ec2af1cc69a4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1698,7 +1706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_MaxRayIntersections: 0
 --- !u!1001 &927877005
 PrefabInstance:
