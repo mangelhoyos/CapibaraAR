@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Client : MonoBehaviour
 {
-    [SerializeField] private IngredientsList_SO ingredientOptions;
 
     private Hamburguer desiredHamburguer = null;
 
@@ -21,6 +20,7 @@ public class Client : MonoBehaviour
     private const float TIMEREDUCTION = 0.1f;
 
     bool isPaused;
+    bool isTimerStoped;
 
     [ContextMenu("Generate Order")]
     public void GenerateOrder()
@@ -31,47 +31,43 @@ public class Client : MonoBehaviour
 
         for(int i = 0; i < desiredIngredients; i++)
         {
-            int randomIngredient = UnityEngine.Random.Range(0, ingredientOptions.ingredients.Count);
+            
+            Ingredient ingredientChoosed = new();
 
-            while (CountIngredientsInList(desiredHamburguer.ingredientList, ingredientOptions.ingredients[randomIngredient]) >= 2)
+            do
             {
-                randomIngredient = UnityEngine.Random.Range(0, ingredientOptions.ingredients.Count);
+                int randomIngredient = UnityEngine.Random.Range(0, Enum.GetNames(typeof(IngredientType)).Length);
+                ingredientChoosed.ingredientType = (IngredientType)randomIngredient;
             }
+            while (desiredHamburguer.ingredientList.Where(x => x.ingredientType == ingredientChoosed.ingredientType).ToList().Count >= 2);
 
-            desiredHamburguer.AddIngredientToHamburguer(ingredientOptions.ingredients[randomIngredient]);
+            desiredHamburguer.AddIngredientToHamburguer(ingredientChoosed);
 
             Debug.Log("El ingrediente es: " + desiredHamburguer.ingredientList[i].ingredientType);
         }
 
-    }
-
-    private int CountIngredientsInList(List<Ingredient> list, Ingredient ingredient)
-    {
-        int count = 0;
-
-        foreach (Ingredient item in list)
-        {
-            if (item.Equals(ingredient))
-            {
-                count++;
-            }
-        }
-
-        return count;
+        //Initialize Timer here InitializeTimer();
     }
 
     private void InitializeTimer()
     {
-
+        timeLeftForOrder = INITIALTIMELEFT;
     }
 
     private void UpdateTimer()
     {
-        if(!isPaused)
+        if(!isPaused && !isTimerStoped)
         {
             timeLeftForOrder -= TIMEREDUCTION * difficultyMultiplier * Time.deltaTime;
             //TODO Clock animation
         }
+    }
+
+    public void ClientWellServed()
+    {
+        isTimerStoped = true;
+        //Disable order message
+        //Move client to exit
     }
 
     public bool ReceiveHamburguer(Hamburguer cookedHamburguer)

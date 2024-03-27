@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Client clientPrefab;
     private Client actualClient = null;
     public static GameManager Instance;
 
@@ -26,7 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void GenerateNewClient()
     {
-        //actualClient = Instantiate bla bla bla;
+        actualClient = Instantiate(clientPrefab);
+
         //llama la funcion para mover el capibara al puesto
     }
 
@@ -42,7 +44,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            hamburguerAssembly.ResetAssembly();
             AudioManager.instance.Play("ImpatientCapibara");
         }
     }
