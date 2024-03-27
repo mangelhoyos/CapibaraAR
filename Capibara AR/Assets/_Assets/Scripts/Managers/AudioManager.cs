@@ -77,15 +77,16 @@ public class AudioManager : MonoBehaviour
 	{
 		if(isPlay)
 		{
-			sound.source.volume = 0;
 			sound.source.Play();
-		}
+            sound.source.volume = 0;
+        }
 
         float elapsedTime = 0;
+		float initialValue = sound.source.volume;
 
         while (elapsedTime < duration)
         {
-			sound.source.volume = Mathf.Lerp(sound.source.volume, endValue, elapsedTime / duration);
+			sound.source.volume = Mathf.Lerp(initialValue, endValue, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
