@@ -17,29 +17,44 @@ public class ClientMovement : MonoBehaviour
     [SerializeField] private float fadeTime;
     [SerializeField] private Material clientMaterial;
 
-
     private Client client;
+    private Vector3 entryPoint;
+    private Vector3 exitPoint;
+
+    public bool hasOrder;
 
 
     void Start()
     {
-        transform.position = spawnPoint;
+        entryPoint = spawnPoint + Vector3.right;
+        exitPoint = spawnPoint - Vector3.right;
+        transform.position = entryPoint;
+        //clientMaterial.color.a = 0.0f;
         client = GetComponent<Client>();
 
+        //Debugin process and test
+        //StartCoroutine(FadeRoutine(1.0f, fadeTime, true));
+        //StartCoroutine(MoveRoutine(orderPoint));
 
-        StartCoroutine(FadeRoutine(1.0f, fadeTime, true));
-        StartCoroutine(MoveRoutine());
+        Debug.Log("Tiene orden el pana?" + hasOrder);
     }
 
-
-    void Update()
+    [ContextMenu("Move Client to order")]
+    public void MoveClientToOrderPoint()
     {
+        StartCoroutine(FadeRoutine(1.0f, fadeTime, true));
+        StartCoroutine(MoveRoutine(orderPoint));
+    }
 
+    [ContextMenu("Move client to exit")]
+    public void MoveClientToExitPoint()
+    {
+        StartCoroutine(MoveRoutine(exitPoint));
     }
 
     private IEnumerator FadeRoutine(float targetAlpha, float duration, bool fadeIn)
     {
-        float elapsedTime = 0f;
+        float elapsedTime = 0.0f;
         Color color = clientMaterial.color;
         float startAlpha = color.a;
         float endAlpha = targetAlpha;
@@ -55,7 +70,7 @@ public class ClientMovement : MonoBehaviour
             }
             else
             {
-                color.a = Mathf.Lerp(startAlpha, 0f, lerpValue);
+                color.a = Mathf.Lerp(startAlpha, 0.0f, lerpValue);
             }
 
             clientMaterial.color = color;
@@ -67,21 +82,40 @@ public class ClientMovement : MonoBehaviour
         clientMaterial.color = color;
     }
 
-    IEnumerator MoveRoutine()
+    IEnumerator MoveRoutine(Vector3 targetPoint)
     {
+        Debug.Log("Me estoy moviendo rey");
+
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
 
-        // Movimiento hacia la posición objetivo
-        while (Vector3.Distance(transform.position, orderPoint) > 0.05f)
+        // Movimiento hacia el punto objetivo
+        while (Vector3.Distance(transform.position, targetPoint) > 0.05f)
         {
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / clientSpeed);
-            transform.position = Vector3.Lerp(startPosition, orderPoint, t);
+            transform.position = Vector3.Lerp(startPosition, targetPoint, t);
+
+            if (targetPoint == exitPoint && transform.position.z >= 10.0f) StartCoroutine(FadeRoutine(0.0f, fadeTime, false));
+
             yield return null;
         }
 
-        Debug.Log("LLegue bro ");
+        // Logro del destino
+        Debug.Log("Llegué bro");
+
+        if (targetPoint == orderPoint) 
+        {
+            client.GenerateOrder();
+            hasOrder = true;
+            Debug.Log("Ya ordeno Pepapig" + hasOrder);
+        }
+
+        if(targetPoint == exitPoint)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }
