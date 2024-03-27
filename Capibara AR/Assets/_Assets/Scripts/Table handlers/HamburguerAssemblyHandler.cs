@@ -5,6 +5,9 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
 {
     private Hamburguer hamburguerInProcess = new Hamburguer(); //Current hamburguer being built in the assembly
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem vanishPS;
+
     [Header("Ingredients positioning")]
     [SerializeField] private Transform ingredientsAnchorPosition;
     [SerializeField] private float ingredientsOffsetIncrease;
@@ -32,9 +35,15 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
     
     public void ResetAssembly()
     {
+        foreach(Ingredient ingredient in hamburguerInProcess.ingredientList) 
+        {
+            Destroy(ingredient.gameObject);
+        }
+
         hamburguerInProcess = new Hamburguer();
         ingredientsOffSet = 0;
         numberOfIngredients = 0;
+        vanishPS.Play();
     }
 
     public void ItemReceived(IGrabbable grabbableReceived)

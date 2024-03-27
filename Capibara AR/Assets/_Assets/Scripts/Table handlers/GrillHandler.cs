@@ -85,6 +85,7 @@ public class GrillHandler : MonoBehaviour, IDropZone
 
         availableSpaceData.indexedIngredient = (grabbableReceived as MonoBehaviour).GetComponent<GrillableIngredient>();
         availableSpaceData.isOccupied = true;
+        availableSpaceData.smokeParticles.Play();
 
         AddGrillIngredient((grabbableReceived as MonoBehaviour).GetComponent<GrillableIngredient>());
     }
@@ -104,6 +105,7 @@ public class GrillHandler : MonoBehaviour, IDropZone
 
         foundPositionForIngredient.isOccupied = false;
         foundPositionForIngredient.indexedIngredient = null;
+        foundPositionForIngredient.smokeParticles.Stop();
 
         RemoveGrillIngredient((grabbableRemoved as MonoBehaviour).GetComponent<GrillableIngredient>());
     }
@@ -114,5 +116,6 @@ public class GrillSpaceData
 {
     public bool isOccupied = false;
     public Transform grillPosition;
+    public ParticleSystem smokeParticles;
     [HideInInspector] public GrillableIngredient indexedIngredient = null;
 }
