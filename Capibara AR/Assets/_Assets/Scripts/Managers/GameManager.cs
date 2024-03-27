@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Client clientPrefab;
+    [SerializeField] public Transform tablePosition;
+
     private Client actualClient = null;
     public static GameManager Instance;
 
