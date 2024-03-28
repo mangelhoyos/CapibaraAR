@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,12 @@ public class GameManager : MonoBehaviour
     public UnityEvent<bool> OnGamePaused;
     [SerializeField] private Tutorial gameTutorial;
     [SerializeField] private HamburguerAssemblyHandler hamburguerAssembly;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject gameUI;
+    [SerializeField] private TMP_Text gameOverPoints;
+
+    private bool isPaused;
 
     private void Awake()
     {
@@ -25,6 +33,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Start()
+    {
+        StartTutorial();
+        AudioManager.instance.SetWithFade("Planning", 6, true);
     }
 
     private void GenerateNewClient()
@@ -52,7 +66,10 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        //TODO
+        TogglePauseGame(false);
+        gameOverScreen.SetActive(true);
+        gameOverPoints.text = actualPoints.ToString("00000");
+        AudioManager.instance.Play("Lose");
     }
 
     public void StartTutorial()
@@ -65,4 +82,26 @@ public class GameManager : MonoBehaviour
         //TODO
     }
 
+    public void TogglePauseGame()
+    {
+        isPaused = !isPaused;
+        OnGamePaused?.Invoke(isPaused);
+        gameOverScreen.SetActive(isPaused);
+        gameUI.SetActive(!isPaused);
+        AudioManager.instance.Play("Button");
+    }
+
+    public void TogglePauseGame(bool state)
+    {
+        isPaused = state;
+        OnGamePaused?.Invoke(isPaused);
+        gameOverScreen.SetActive(isPaused);
+        gameUI.SetActive(!isPaused);
+        AudioManager.instance.Play("Button");
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

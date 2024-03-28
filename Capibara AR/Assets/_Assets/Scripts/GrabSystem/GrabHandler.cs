@@ -16,7 +16,6 @@ public class GrabHandler : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        AudioManager.instance.SetWithFade("Soundtrack", 6, true);
     }
 
     private void OnEnable()
