@@ -8,6 +8,8 @@ namespace Lean.Touch
 	[AddComponentMenu(LeanTouch.ComponentPathPrefix + "Drag Translate")]
 	public class LeanDragTranslate : MonoBehaviour
 	{
+		private float yOffsetValue;
+
 		/// <summary>The method used to find fingers to use with this component. See LeanFingerFilter documentation for more information.</summary>
 		public LeanFingerFilter Use = new LeanFingerFilter(true);
 
@@ -60,6 +62,11 @@ namespace Lean.Touch
 		protected virtual void Awake()
 		{
 			Use.UpdateRequiredSelectable(gameObject);
+		}
+
+		protected virtual void Start()
+		{
+			yOffsetValue = transform.position.y + 0.05f;
 		}
 
 		protected virtual void Update()
@@ -146,11 +153,13 @@ namespace Lean.Touch
 				// Screen position of the transform
 				var screenPoint = camera.WorldToScreenPoint(transform.position);
 
-				// Add the deltaPosition
-				screenPoint += (Vector3)screenDelta * Sensitivity;
+				screenPoint += new Vector3(screenDelta.x * Sensitivity, screenDelta.y * Sensitivity * 2, 0);
 
 				// Convert back to world space
-				transform.position = camera.ScreenToWorldPoint(screenPoint);
+				Vector3 movePos = camera.ScreenToWorldPoint(screenPoint);
+				movePos.y = yOffsetValue;
+
+                transform.position = movePos;
 			}
 			else
 			{

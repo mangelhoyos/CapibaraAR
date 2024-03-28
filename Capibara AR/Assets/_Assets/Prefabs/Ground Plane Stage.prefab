@@ -811,7 +811,7 @@ MonoBehaviour:
     RequiredMouseButtons: 0
     RequiredSelectable: {fileID: 0}
   _camera: {fileID: 0}
-  sensitivity: 1
+  sensitivity: 1.2
   damping: -1
   inertia: 0
   remainingTranslation: {x: 0, y: 0, z: 0}
@@ -1205,7 +1205,7 @@ MonoBehaviour:
     RequiredMouseButtons: 0
     RequiredSelectable: {fileID: 0}
   _camera: {fileID: 0}
-  sensitivity: 1
+  sensitivity: 1.2
   damping: -1
   inertia: 0
   remainingTranslation: {x: 0, y: 0, z: 0}
@@ -2709,7 +2709,7 @@ MonoBehaviour:
     RequiredMouseButtons: 0
     RequiredSelectable: {fileID: 0}
   _camera: {fileID: 0}
-  sensitivity: 1
+  sensitivity: 1.2
   damping: -1
   inertia: 0
   remainingTranslation: {x: 0, y: 0, z: 0}
@@ -2872,7 +2872,7 @@ MonoBehaviour:
     RequiredMouseButtons: 0
     RequiredSelectable: {fileID: 0}
   _camera: {fileID: 0}
-  sensitivity: 1
+  sensitivity: 1.2
   damping: -1
   inertia: 0
   remainingTranslation: {x: 0, y: 0, z: 0}
@@ -3244,7 +3244,7 @@ MonoBehaviour:
     RequiredMouseButtons: 0
     RequiredSelectable: {fileID: 0}
   _camera: {fileID: 0}
-  sensitivity: 1
+  sensitivity: 1.2
   damping: -1
   inertia: 0
   remainingTranslation: {x: 0, y: 0, z: 0}

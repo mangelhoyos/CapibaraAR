@@ -44,6 +44,7 @@ public class GrabHandler : MonoBehaviour
 
                 translateComponent.enabled = true;
                 actualGrabbedItem = translateComponent;
+                actualGrabbedItem.transform.SetParent(mainCamera.transform);
                 
                 grabbableItem.ActualDropzone.RemoveItem(grabbableItem);
             }
@@ -73,6 +74,7 @@ public class GrabHandler : MonoBehaviour
                     {
                         hitDropZone = true;
                         dropZone.ItemReceived(grabbableItem);
+                        actualGrabbedItem.transform.SetParent(null);
                     }
                 }
             }
