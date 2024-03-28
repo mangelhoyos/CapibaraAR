@@ -87,6 +87,7 @@ public class GrillHandler : MonoBehaviour, IDropZone
 
         grillableIngredient = (grabbableReceived as MonoBehaviour).transform;
         grillableIngredient.position = availableSpaceData.grillPosition.position;
+        grillableIngredient.rotation = availableSpaceData.grillPosition.rotation * Quaternion.Euler(-90,0,0);
 
         grabbableReceived.ActualDropzone = this;
         grabbableReceived.ReturnAnchor = availableSpaceData.grillPosition.position;

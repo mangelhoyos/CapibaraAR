@@ -25,6 +25,12 @@ public class HamburguerAssemblyHandler : MonoBehaviour, IDropZone
         AudioManager.instance.Play("Assemble");
         Vector3 offset = Vector3.up * ingredientsOffSet;
         ingredient.transform.position = ingredientsAnchorPosition.position + offset;
+
+        if (ingredient.ingredientType != IngredientType.LETTUCE)
+            ingredient.transform.rotation = ingredientsAnchorPosition.rotation;
+        else
+            ingredient.transform.rotation = ingredientsAnchorPosition.rotation * Quaternion.Euler(90, 0, 0);
+
         ingredientsOffSet += ingredientsOffsetIncrease;
         numberOfIngredients++;
     }
