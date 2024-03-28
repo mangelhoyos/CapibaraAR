@@ -790,8 +790,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.019887172, y: 0.020309668, z: 0.030483406}
-  m_Center: {x: 0.000615199, y: 0.0013757542, z: 0.00026811977}
+  m_Size: {x: 0.02413575, y: 0.024629934, z: 0.030483397}
+  m_Center: {x: -0.000140433, y: -0.0007843722, z: 0.00026811802}
 --- !u!114 &6384782072432129077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,8 +1266,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.4516115, y: 1, z: 3.820484}
+  m_Center: {x: 0.0009318832, y: -0.000000016547434, z: 0.17263067}
 --- !u!114 &4957956321165508501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,8 +1362,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.16861606, y: 0.17145844, z: 0.03598051}
-  m_Center: {x: -0.00043203312, y: -0.00048267093, z: 0.006421497}
+  m_Size: {x: 0.16861598, y: 0.18579847, z: 0.03598051}
+  m_Center: {x: -0.00022683019, y: 0.006693235, z: 0.006421499}
 --- !u!114 &8711228892401878753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,8 +2910,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.021601476, y: 0.0213816, z: 0.020000001}
-  m_Center: {x: -0.000000007450581, y: 0.00022100605, z: 8.642285e-11}
+  m_Size: {x: 0.027741287, y: 0.029826678, z: 0.020000001}
+  m_Center: {x: -0.00059584616, y: 0.00039449983, z: 8.876673e-16}
 --- !u!4 &6565045799125485396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8110a58f084d73e4d9fe492d5577be5d, type: 3}
@@ -3220,8 +3220,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.021208439, y: 0.021053804, z: 0.020000005}
-  m_Center: {x: 0.000000014901161, y: 0.00015520486, z: -0.000000059538046}
+  m_Size: {x: 0.02836096, y: 0.028508838, z: 0.020000005}
+  m_Center: {x: -0.0010382163, y: -0.00020254844, z: -0.000000059623034}
 --- !u!114 &4907290952238379622
 MonoBehaviour:
   m_ObjectHideFlags: 0
