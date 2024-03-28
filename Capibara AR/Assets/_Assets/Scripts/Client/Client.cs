@@ -54,8 +54,6 @@ public class Client : MonoBehaviour
             while (desiredHamburguer.ingredientList.Where(x => x.ingredientType == ingredientChoosed.ingredientType).ToList().Count >= 2);
 
             desiredHamburguer.AddIngredientToHamburguer(ingredientChoosed);
-
-            Debug.Log("El ingrediente es: " + desiredHamburguer.ingredientList[i].ingredientType);
         }
 
         StartCoroutine(RequestOrderRoutine());
@@ -80,10 +78,13 @@ public class Client : MonoBehaviour
     {
         if(hasOrder && !isTimerStoped && !isPaused)
         {
-            Debug.Log("Si entramos al timer rey?" + timeLeftForOrder);
-
             timeLeftForOrder -= TIMEREDUCTION * difficultyMultiplier * Time.deltaTime;
             orderMessage.UpdateOrderTimer(timeLeftForOrder / INITIALTIMELEFT);
+
+            if(timeLeftForOrder <= INITIALTIMELEFT / 2)
+            {
+                AudioManager.instance.Play("ImpatientCapibara");
+            }
 
             if(timeLeftForOrder <= 0)
             {

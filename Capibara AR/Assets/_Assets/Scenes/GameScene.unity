@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06622223, y: 0.273}
   m_AnchorMax: {x: 0.4777778, y: 0.5}
-  m_AnchoredPosition: {x: -1.1900024, y: 1.5}
+  m_AnchoredPosition: {x: -1.1899414, y: 1.5}
   m_SizeDelta: {x: 4.3872986, y: 11.387299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &25199128
@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaneIndicator: {fileID: 1353731089078378, guid: b9ed12c68682d5b49bfa70ee9d71602d, type: 3}
-  Height: 1.4
+  Height: 1.55
   OnInteractiveHitTest:
     m_PersistentCalls:
       m_Calls:
@@ -2902,7 +2902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06622223, y: 0.5755625}
   m_AnchorMax: {x: 0.4777778, y: 0.7996042}
-  m_AnchoredPosition: {x: -1.1900024, y: 1.5}
+  m_AnchoredPosition: {x: -1.1899414, y: 1.5}
   m_SizeDelta: {x: 4.3872986, y: 17.387299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899435884

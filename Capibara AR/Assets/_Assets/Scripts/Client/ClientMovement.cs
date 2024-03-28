@@ -92,7 +92,6 @@ public class ClientMovement : MonoBehaviour
 
     IEnumerator MoveRoutine(Vector3 targetPoint)
     {
-        Debug.Log("Me estoy moviendo rey");
         StartCoroutine(RotateClient(targetPoint));
         animator.SetBool("isWalking", true);
 
@@ -127,9 +126,6 @@ public class ClientMovement : MonoBehaviour
 
     private IEnumerator RotateClient(Vector3 rotateDirection)
     {
-
-        Debug.Log("El rotaciao: " + rotateDirection);
-        Debug.Log(" Este es el table point: " + tablePoint);
 
         Quaternion targetRotation = Quaternion.LookRotation(rotateDirection - transform.position, tablePoint.up);
         float angle = Quaternion.Angle(transform.rotation, targetRotation);

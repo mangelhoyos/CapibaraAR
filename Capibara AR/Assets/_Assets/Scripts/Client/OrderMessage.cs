@@ -21,7 +21,6 @@ public class OrderMessage : MonoBehaviour
     public void UpdateOrderTimer(float timerCount)
     {
         timer.fillAmount = timerCount;
-        Debug.Log("Este es el timer Count sisabe la division: " + timerCount);
     }
 
     public void ShowMessage(Hamburguer hamburguer)
