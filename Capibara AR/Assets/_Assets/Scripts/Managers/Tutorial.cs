@@ -18,6 +18,11 @@ public class Tutorial : MonoBehaviour
 
     private GameObject placedObject;
 
+    private void Start()
+    {
+        planeFinderController.SetActive(false);
+    }
+
     IEnumerator FadeOutIntroScreen()
     {
         yield return new WaitForSeconds(3);
