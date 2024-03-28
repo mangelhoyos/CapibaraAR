@@ -22,7 +22,7 @@ public class GrillHandler : MonoBehaviour, IDropZone
     public void AddGrillIngredient(GrillableIngredient meatToCook)
     {
         meatCooking.Add(meatToCook);
-        AudioManager.instance.Play("Assemble");
+        AudioManager.instance.Play("AddToGrill");
 
         if (grillingCoroutine != null)
             return;
