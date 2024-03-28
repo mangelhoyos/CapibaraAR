@@ -60,9 +60,8 @@ public class GrabHandler : MonoBehaviour
             actualGrabbedItem.enabled = false;
 
             bool hitDropZone = false;
-            float radius = 0.2f;
+            float radius = 0.1f;
             Vector3 origin = actualGrabbedItem.transform.position;
-            Debug.DrawRay(actualGrabbedItem.transform.position, actualGrabbedItem.transform.up * 3, Color.red, 5);
             Collider[] dropZoneList = Physics.OverlapSphere(origin, radius, dropzoneMask);
             if (dropZoneList.Length > 0)
             {

@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
         isPaused = !isPaused;
         OnGamePaused?.Invoke(isPaused);
-        gameOverScreen.SetActive(isPaused);
+        pauseMenu.SetActive(isPaused);
         gamePauseButton.SetActive(!isPaused);
         AudioManager.instance.Play("Button");
     }
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         isPaused = state;
         OnGamePaused?.Invoke(isPaused);
-        gameOverScreen.SetActive(isPaused);
+        pauseMenu.SetActive(isPaused);
         gameUI.SetActive(!isPaused);
         AudioManager.instance.Play("Button");
     }
