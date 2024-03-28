@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     private int actualPoints;
-    private float difficultyScale;
+    private float difficultyScale = 1;
 
     [Header("Game manager params")]
     public UnityEvent<bool> OnGamePaused;
@@ -21,9 +21,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject grabHandler;
     [SerializeField] private TMP_Text gameOverPoints;
 
     private bool isPaused;
+    private bool isGameOver;
 
     private void Awake()
     {
@@ -41,22 +43,25 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.SetWithFade("Planning", 6, true);
     }
 
+    [ContextMenu("Start Game")]
     private void GenerateNewClient()
     {
         actualClient = Instantiate(clientPrefab);
-
-        //llama la funcion para mover el capibara al puesto
+        actualClient.difficultyMultiplier = difficultyScale;
     }
 
     public void ServeClient(Hamburguer hamburguerReceived)
     {
-        if (actualClient == null) //Agregar comprobación aqui de tiene orden
+        if (actualClient == null || !actualClient.hasOrder || isGameOver)
             return;
 
         if (actualClient.ReceiveHamburguer(hamburguerReceived))
         {
             AudioManager.instance.Play("HappyCapibara");
-            //Agregar funcion de retirar capibara
+            difficultyScale += 0.15f;
+            actualClient.ClientWellServed();
+            actualPoints += 100;
+            GenerateNewClient();
         }
         else
         {
@@ -64,8 +69,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
+        grabHandler.SetActive(false);
         TogglePauseGame(false);
         gameOverScreen.SetActive(true);
         gameOverPoints.text = actualPoints.ToString("00000");
@@ -79,11 +85,13 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        //TODO
+        GenerateNewClient();
     }
 
     public void TogglePauseGame()
     {
+        if (isGameOver) return;
+
         isPaused = !isPaused;
         OnGamePaused?.Invoke(isPaused);
         gameOverScreen.SetActive(isPaused);

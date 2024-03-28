@@ -19,8 +19,8 @@ public class GrillableIngredient : Ingredient
     private const float COOKTHRESHOLD = 4f;
     private const float BURNTTHRESHHOLD = COOKTHRESHOLD * 2;
 
-    bool isCooked = false;
-    bool isBurnt = false;
+    [HideInInspector] public bool isCooked = false;
+    [HideInInspector] public bool isBurnt = false;
 
     public void CookMeat()
     {

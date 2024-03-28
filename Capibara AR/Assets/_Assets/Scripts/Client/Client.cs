@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Client : MonoBehaviour
 {
+    [SerializeField] private OrderMessage orderMessage;
+    [SerializeField] private ClientMovement clientMovement;
 
     private Hamburguer desiredHamburguer = null;
 
@@ -14,20 +15,26 @@ public class Client : MonoBehaviour
     public Action OnClientFailed;
 
     [HideInInspector] public float difficultyMultiplier = 0;
-    private float timeLeftForOrder;
+    public float timeLeftForOrder;
 
     private const float INITIALTIMELEFT = 20;
-    private const float TIMEREDUCTION = 0.1f;
+    private const float TIMEREDUCTION = 0.3f;
 
     bool isPaused;
     bool isTimerStoped;
 
-    [ContextMenu("Generate Order")]
+    public bool hasOrder;
+
+    private void Update()
+    {
+        UpdateTimer();
+    }
+
     public void GenerateOrder()
     {
         desiredHamburguer = new();
 
-        int desiredIngredients = UnityEngine.Random.Range(3, 6); //Change number for SerializeField variables after test
+        int desiredIngredients = UnityEngine.Random.Range(3, 6);
 
         for(int i = 0; i < desiredIngredients; i++)
         {
@@ -46,28 +53,46 @@ public class Client : MonoBehaviour
             Debug.Log("El ingrediente es: " + desiredHamburguer.ingredientList[i].ingredientType);
         }
 
-        //Initialize Timer here InitializeTimer();
+        StartCoroutine(RequestOrderRoutine());
+    }
+
+    private IEnumerator RequestOrderRoutine()
+    {
+        InitializeTimer();
+        AudioManager.instance.Play("CapibaraTalking");
+        orderMessage.ShowMessage(desiredHamburguer);
+        yield return new WaitForSeconds(0.5f);
+        hasOrder = true;
     }
 
     private void InitializeTimer()
     {
         timeLeftForOrder = INITIALTIMELEFT;
+        orderMessage.UpdateOrderTimer(timeLeftForOrder / INITIALTIMELEFT);
     }
 
     private void UpdateTimer()
     {
-        if(!isPaused && !isTimerStoped)
+        if(hasOrder && !isTimerStoped && !isPaused)
         {
+            Debug.Log("Si entramos al timer rey?" + timeLeftForOrder);
+
             timeLeftForOrder -= TIMEREDUCTION * difficultyMultiplier * Time.deltaTime;
-            //TODO Clock animation
+            orderMessage.UpdateOrderTimer(timeLeftForOrder / INITIALTIMELEFT);
+
+            if(timeLeftForOrder <= 0)
+            {
+                GameManager.Instance.GameOver();
+                isTimerStoped = true;
+            }
         }
     }
 
     public void ClientWellServed()
     {
         isTimerStoped = true;
-        //Disable order message
-        //Move client to exit
+        orderMessage.HideMessage();
+        clientMovement.MoveClientToExitPoint();
     }
 
     public bool ReceiveHamburguer(Hamburguer cookedHamburguer)
@@ -83,6 +108,12 @@ public class Client : MonoBehaviour
         {
             if (!desiredCounts.ContainsKey(ingredient.ingredientType) || desiredCounts[ingredient.ingredientType] == 0)
                 return false;
+
+            if (ingredient.TryGetComponent(out GrillableIngredient grillIngredient))
+            {
+                if (!grillIngredient.isCooked || grillIngredient.isBurnt)
+                    return false;
+            }
 
             desiredCounts[ingredient.ingredientType]--;
         }

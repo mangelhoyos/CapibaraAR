@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ClientMovement : MonoBehaviour
@@ -19,15 +17,11 @@ public class ClientMovement : MonoBehaviour
     [SerializeField] private List<Renderer> clientMeshRenderers = new List<Renderer>();
 
     private Client client;
-    private Vector3 entryPoint;
     private Vector3 exitPoint;
     private Vector3 spawnPoint;
     private Vector3 orderPoint;
 
     private Transform tablePoint;
-
-    public bool hasOrder;
-
 
     void Start()
     {
@@ -38,22 +32,18 @@ public class ClientMovement : MonoBehaviour
         exitPoint = orderPoint + tablePoint.right * 15.0f;
 
         transform.position = spawnPoint;
-        //transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
 
         client = GetComponent<Client>();
 
-        //Debug.Log("Tiene orden el pana? " + hasOrder);
-        Debug.Log(GameManager.Instance.tablePosition.transform.up);
+        MoveClientToOrderPoint();
     }
 
-    [ContextMenu("Move Client to order")]
     public void MoveClientToOrderPoint()
     {
         StartCoroutine(FadeRoutine(1.0f, fadeTime, true));
         StartCoroutine(MoveRoutine(orderPoint));
     }
 
-    [ContextMenu("Move client to exit")]
     public void MoveClientToExitPoint()
     {
         StartCoroutine(MoveRoutine(exitPoint));
@@ -126,8 +116,6 @@ public class ClientMovement : MonoBehaviour
         {
             transform.rotation = tablePoint.rotation;
             client.GenerateOrder();
-            hasOrder = true;
-            //Debug.Log("Ya ordeno Pepapig" + hasOrder);
         }
 
         if(targetPoint == exitPoint)
@@ -140,6 +128,9 @@ public class ClientMovement : MonoBehaviour
     private IEnumerator RotateClient(Vector3 rotateDirection)
     {
 
+        Debug.Log("El rotaciao: " + rotateDirection);
+        Debug.Log(" Este es el table point: " + tablePoint);
+
         Quaternion targetRotation = Quaternion.LookRotation(rotateDirection - transform.position, tablePoint.up);
         float angle = Quaternion.Angle(transform.rotation, targetRotation);
         while (angle > 0.1f)
@@ -151,7 +142,6 @@ public class ClientMovement : MonoBehaviour
 
             yield return null;
         }
-
     }
 
 }

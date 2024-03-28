@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7199,7 +7199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eae16b6e653dfc42b8462cbb5e4832a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientPrefab: {fileID: 0}
+  clientPrefab: {fileID: 3730481693527866205, guid: 5c1ea66695de58d42acd504130a79033, type: 3}
   tablePosition: {fileID: 1027690226}
   OnGamePaused:
     m_PersistentCalls:
@@ -7209,6 +7209,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 485949987}
   gameOverScreen: {fileID: 783686774}
   gameUI: {fileID: 1932434291}
+  grabHandler: {fileID: 963900027}
   gameOverPoints: {fileID: 1535578537}
 --- !u!1001 &1668179108
 PrefabInstance:
@@ -7629,7 +7630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1718130445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8731,7 +8732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1932434292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9720,6 +9721,8 @@ MonoBehaviour:
   meatMeshRenderer:
   - {fileID: 2099397530}
   meatBurntColorMultiplier: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  isCooked: 0
+  isBurnt: 0
 --- !u!65 &2099397533
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9799,6 +9802,8 @@ MonoBehaviour:
   - {fileID: 1689188412}
   - {fileID: 305537321}
   meatBurntColorMultiplier: {r: 0.3764706, g: 0.3764706, b: 0.3764706, a: 1}
+  isCooked: 0
+  isBurnt: 0
 --- !u!114 &2107394116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10012,7 +10017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2126495923
 RectTransform:
   m_ObjectHideFlags: 0
