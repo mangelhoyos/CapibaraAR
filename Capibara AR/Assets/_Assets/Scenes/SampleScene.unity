@@ -916,10 +916,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 243881115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000085831, y: -853.6945}
-  m_SizeDelta: {x: 246.44, y: 74.6111}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.0000085831, y: 106.30548}
+  m_SizeDelta: {x: 246.44, y: 74.611084}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239475123
 MonoBehaviour:
@@ -2487,10 +2487,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1718130445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000085831, y: -853.6945}
-  m_SizeDelta: {x: 246.44, y: 74.6111}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.0000085831, y: 106.30548}
+  m_SizeDelta: {x: 246.44, y: 74.611084}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815526384
 MonoBehaviour:
@@ -2544,8 +2544,6 @@ GameObject:
   - component: {fileID: 847257767}
   - component: {fileID: 847257766}
   - component: {fileID: 847257765}
-  - component: {fileID: 847257771}
-  - component: {fileID: 847257770}
   - component: {fileID: 847257772}
   m_Layer: 0
   m_Name: Main Camera
@@ -2699,7 +2697,7 @@ MonoBehaviour:
   m_FocusMode: -1
   m_LightEstimationMode: -1
   m_AutoFocus: 1
-  m_LightEstimation: 3
+  m_LightEstimation: 0
   m_FacingDirection: 1
   m_RenderMode: 0
 --- !u!81 &847257768
@@ -2761,37 +2759,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &847257770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847257763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a2a2b18961f4247b34cfaab10b7a60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arCameraManager: {fileID: 847257767}
-  mainDirectionalLight: {fileID: 705507994}
---- !u!114 &847257771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847257763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15f82cc229284894964d2d30806969d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HumanSegmentationStencilMode: 0
-  m_HumanSegmentationDepthMode: 0
-  m_EnvironmentDepthMode: 1
-  m_EnvironmentDepthTemporalSmoothing: 1
-  m_OcclusionPreferenceMode: 0
 --- !u!114 &847257772
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(GameObject placedObject)
     {
-        tablePosition = placedObject.transform;
+        tablePosition = placedObject.transform.GetChild(0);
         hamburguerAssembly = placedObject.GetComponentInChildren<HamburguerAssemblyHandler>();
         GenerateNewClient();
     }
