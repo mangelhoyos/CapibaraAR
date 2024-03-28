@@ -7630,7 +7630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1718130445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8732,7 +8732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1932434292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8929,6 +8929,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SetTable
     clip: {fileID: 8300000, guid: bd2cf635b5830114d8cac3b0ca921317, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: AddToGrill
+    clip: {fileID: 8300000, guid: 74dcb36f2fde23042b7df7045d5ebab9, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1
@@ -10017,7 +10026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2126495923
 RectTransform:
   m_ObjectHideFlags: 0
