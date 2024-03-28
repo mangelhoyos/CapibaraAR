@@ -22,6 +22,7 @@ public class Client : MonoBehaviour
 
     bool isPaused;
     bool isTimerStoped;
+    bool alertGiven = false;
 
     public bool hasOrder;
 
@@ -81,9 +82,10 @@ public class Client : MonoBehaviour
             timeLeftForOrder -= TIMEREDUCTION * difficultyMultiplier * Time.deltaTime;
             orderMessage.UpdateOrderTimer(timeLeftForOrder / INITIALTIMELEFT);
 
-            if(timeLeftForOrder <= INITIALTIMELEFT / 2)
+            if(!alertGiven && timeLeftForOrder <= INITIALTIMELEFT / 2)
             {
                 AudioManager.instance.Play("ImpatientCapibara");
+                alertGiven = true;
             }
 
             if(timeLeftForOrder <= 0)
