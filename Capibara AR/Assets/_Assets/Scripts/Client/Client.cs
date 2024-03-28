@@ -25,6 +25,11 @@ public class Client : MonoBehaviour
 
     public bool hasOrder;
 
+    private void Start()
+    {
+        GameManager.Instance.OnGamePaused.AddListener(ClientPause);
+    }
+
     private void Update()
     {
         UpdateTimer();

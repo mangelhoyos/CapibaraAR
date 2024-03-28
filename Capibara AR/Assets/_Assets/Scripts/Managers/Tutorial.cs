@@ -84,6 +84,7 @@ public class Tutorial : MonoBehaviour
             Destroy(placedObject);
             placedObject = null;
             planeFinderController.SetActive(true);
+            confirmPanel.SetActive(false);
         }
     }
 
@@ -91,7 +92,7 @@ public class Tutorial : MonoBehaviour
     {
         gameTutorial.SetActive(false);
         gameUI.SetActive(true);
-        GameManager.Instance.StartGame();
+        GameManager.Instance.StartGame(placedObject);
         OnTutorialStepsCompleted?.Invoke();
         AudioManager.instance.SetWithFade("Transition", 1f, false);
         AudioManager.instance.SetWithFade("Soundtrack", 2f, true);

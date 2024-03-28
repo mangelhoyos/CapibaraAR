@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject gamePauseButton;
     [SerializeField] private GameObject grabHandler;
     [SerializeField] private TMP_Text gameOverPoints;
 
@@ -83,8 +84,10 @@ public class GameManager : MonoBehaviour
         gameTutorial.StartTutorial();
     }
 
-    public void StartGame()
+    public void StartGame(GameObject placedObject)
     {
+        tablePosition = placedObject.transform;
+        hamburguerAssembly = placedObject.GetComponentInChildren<HamburguerAssemblyHandler>();
         GenerateNewClient();
     }
 
@@ -95,7 +98,7 @@ public class GameManager : MonoBehaviour
         isPaused = !isPaused;
         OnGamePaused?.Invoke(isPaused);
         gameOverScreen.SetActive(isPaused);
-        gameUI.SetActive(!isPaused);
+        gamePauseButton.SetActive(!isPaused);
         AudioManager.instance.Play("Button");
     }
 
