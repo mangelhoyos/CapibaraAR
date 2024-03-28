@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -232,7 +232,7 @@ RectTransform:
   m_Father: {fileID: 1335670675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.71428573, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -575,8 +575,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1792636776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.71428573, y: 0}
+  m_AnchorMax: {x: 0.71428573, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000009536743}
   m_SizeDelta: {x: 56, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2375,6 +2375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806055184}
   - component: {fileID: 806055185}
+  - component: {fileID: 806055186}
   m_Layer: 5
   m_Name: SFXSlider
   m_TagString: Untagged
@@ -2448,13 +2449,28 @@ MonoBehaviour:
   m_FillRect: {fileID: 69552470}
   m_HandleRect: {fileID: 192593434}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &806055186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806055183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55fdf1236882ca41be3856202a54390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
+  parameter: SFX
+  slider: {fileID: 806055185}
 --- !u!1 &815526382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3151,6 +3167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057297178}
   - component: {fileID: 1057297179}
+  - component: {fileID: 1057297180}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -3224,13 +3241,28 @@ MonoBehaviour:
   m_FillRect: {fileID: 1508378082}
   m_HandleRect: {fileID: 1312359189}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1057297180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057297177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55fdf1236882ca41be3856202a54390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMixer: {fileID: 24100000, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
+  parameter: Music
+  slider: {fileID: 1057297179}
 --- !u!1 &1082785108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,8 +4170,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2117889407}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.71428573, y: 0}
+  m_AnchorMax: {x: 0.71428573, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000009536743}
   m_SizeDelta: {x: 56, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4743,7 +4775,7 @@ RectTransform:
   m_Father: {fileID: 619207562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.71428573, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5846,7 +5878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfa9e31248e4564897f9b070b1d36c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
   sounds:
   - name: Planning
     clip: {fileID: 8300000, guid: 1532ad55180f7dd4d8f5e46f49b4f881, type: 3}
@@ -5855,7 +5886,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6267253057076313688, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Transition
     clip: {fileID: 8300000, guid: 3a413bc373aa2794eb2eb82dbbb60190, type: 3}
@@ -5864,7 +5895,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6267253057076313688, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Soundtrack
     clip: {fileID: 8300000, guid: 0900e72798c05ee4a9a271fcf4b213be, type: 3}
@@ -5873,7 +5904,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 6267253057076313688, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: MeatFrying
     clip: {fileID: 8300000, guid: 97f2fda276b32a648b7acf4a085fb425, type: 3}
@@ -5882,7 +5913,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: MeatBurnt
     clip: {fileID: 8300000, guid: fc8649c171190e448affefa748c9bd54, type: 3}
@@ -5891,7 +5922,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Bell
     clip: {fileID: 8300000, guid: 300fdc22babfe6d44ab78fb80b6ae639, type: 3}
@@ -5900,7 +5931,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: HappyCapibara
     clip: {fileID: 8300000, guid: d161d7ef314a8c842ae952efa52d3fd2, type: 3}
@@ -5909,7 +5940,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: ImpatientCapibara
     clip: {fileID: 8300000, guid: 514104960a5bac442b70217873ea48ab, type: 3}
@@ -5918,7 +5949,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Lose
     clip: {fileID: 8300000, guid: 5cebe5d402b84be4181277e5c15bb1dd, type: 3}
@@ -5927,7 +5958,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Assemble
     clip: {fileID: 8300000, guid: 49bc741a0e69881429c0481d6592f5aa, type: 3}
@@ -5936,7 +5967,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Thrash
     clip: {fileID: 8300000, guid: 9c030f581032d444c9a5b2378a5d7371, type: 3}
@@ -5945,7 +5976,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: CapibaraTalking
     clip: {fileID: 8300000, guid: 0edbed270dcc94b488804e65c0e7bb30, type: 3}
@@ -5954,7 +5985,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: Button
     clip: {fileID: 8300000, guid: 54a1e5411ec63614faed142a01392091, type: 3}
@@ -5963,7 +5994,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: InitService
     clip: {fileID: 8300000, guid: 0cbe348ba5ea3fd4388ee07d82a84bba, type: 3}
@@ -5972,7 +6003,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: SetTable
     clip: {fileID: 8300000, guid: bd2cf635b5830114d8cac3b0ca921317, type: 3}
@@ -5981,7 +6012,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
   - name: AddToGrill
     clip: {fileID: 8300000, guid: 74dcb36f2fde23042b7df7045d5ebab9, type: 3}
@@ -5990,7 +6021,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: 3570856312432178818, guid: 196928ff44f64b645957205b5f30cb2e, type: 2}
     source: {fileID: 0}
 --- !u!1 &1969713377
 GameObject:
