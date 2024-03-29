@@ -13,7 +13,7 @@ public class GrillableIngredient : Ingredient
 
     [SerializeField] private Texture2D cookedTexture;
     [SerializeField] private MeshRenderer[] meatMeshRenderer;
-    [SerializeField] private Color meatBurntColorMultiplier;
+    [SerializeField] private Texture2D burntTexture;
 
     private const float GRILLINCREMENTVALUE = 0.5f;
     private const float COOKTHRESHOLD = 4f;
@@ -39,25 +39,13 @@ public class GrillableIngredient : Ingredient
         {
             AudioManager.instance.Play("MeatBurnt");
             isBurnt = true;
-            StartCoroutine(BurnMeat());
-        }
-    }
-
-    private IEnumerator BurnMeat()
-    {
-        float TRANSITIONTIME = 4f;
-        float elapsedTime = 0;
-
-        while(elapsedTime < TRANSITIONTIME)
-        {
-            foreach(MeshRenderer renderer in meatMeshRenderer)
+            foreach (MeshRenderer meshRenderer in meatMeshRenderer)
             {
-                renderer.material.color = Color.Lerp(renderer.material.color, meatBurntColorMultiplier, elapsedTime / TRANSITIONTIME);
+                meshRenderer.material.mainTexture = burntTexture;
             }
-            elapsedTime += Time.deltaTime;
-            yield return null;
         }
     }
+
 
     public GrillIngredientState GetGrillableIngredient()
     {

@@ -1408,7 +1408,7 @@ MonoBehaviour:
   meatMeshRenderer:
   - {fileID: 2271882494225067286}
   - {fileID: 4854075588703201081}
-  meatBurntColorMultiplier: {r: 0.3764706, g: 0.3764706, b: 0.3764706, a: 1}
+  burntTexture: {fileID: 2800000, guid: 03fd70668712a0541895f3df6fcad9ef, type: 3}
   isCooked: 0
   isBurnt: 0
 --- !u!1001 &75957279651500000
@@ -3242,7 +3242,7 @@ MonoBehaviour:
   cookedTexture: {fileID: 2800000, guid: c80ec99369cfc9a4e8228b31bba958d2, type: 3}
   meatMeshRenderer:
   - {fileID: 7339334074564886451}
-  meatBurntColorMultiplier: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  burntTexture: {fileID: 2800000, guid: 242e94a0eafdadf4cb1e081f8d2bf5bf, type: 3}
   isCooked: 0
   isBurnt: 0
 --- !u!114 &1260710174749170468
